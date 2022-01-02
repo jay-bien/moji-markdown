@@ -1,10 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.HtmlHandler = void 0;
 class HtmlHandler {
     TextChangeHandler(id, output) {
         const markdown = document.getElementById(id);
         const markdownOutput = document.getElementById(output);
+        console.log("Markdown");
         if (markdown !== null) {
             markdown.onkeyup = e => {
                 if (markdown.value) {
@@ -17,7 +15,6 @@ class HtmlHandler {
         }
     }
 }
-exports.HtmlHandler = HtmlHandler;
 var TagType;
 (function (TagType) {
     TagType[TagType["Header1"] = 0] = "Header1";
@@ -34,3 +31,4 @@ class TagToHtml {
         this.tagType.set(TagType.Paragraph, "p");
     }
 }
+export { HtmlHandler };

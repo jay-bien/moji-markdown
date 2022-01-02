@@ -1,6 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const MarkdownParser_1 = require("./MarkdownParser");
+import { HtmlHandler } from './MarkdownParser.js';
 console.log("ind");
-console.log({ HtmlHandler: MarkdownParser_1.HtmlHandler });
+console.log("ind");
+new HtmlHandler().TextChangeHandler("Markdown", "MarkdownOutput");
+console.log({ HtmlHandler });
 console.log("Index file script2");

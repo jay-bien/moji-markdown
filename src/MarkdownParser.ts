@@ -4,7 +4,8 @@ class HtmlHandler {
 
         const markdown = <HTMLTextAreaElement>document.getElementById( id );
         const markdownOutput = <HTMLLabelElement>document.getElementById( output );
-       
+        console.log("Markdown")
+
         if( markdown !== null ){
             markdown.onkeyup = e => {
 
