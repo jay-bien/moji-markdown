@@ -22,7 +22,6 @@ class Parser {
             parsed += open + line + close;
         }
         else {
-            console.log("Sliced: ", lineArr.slice(1).join(" "));
             lineArr[1] ? lineArr[1] = lineArr.slice(1).join(" ") : lineArr[1] = "";
             parsed += open + lineArr[1] + close;
         }
