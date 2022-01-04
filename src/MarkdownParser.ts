@@ -1,43 +1,36 @@
-class HtmlHandler {
+import { MarkownDocument } from "./MarkdownDoc.js";
+import { HtmlHandler} from './HtmlHandler.js'
+import { TagToHtml } from './TagToHtml.js';
 
-    public TextChangeHandler( id: string, output: string ): void{
+class Parser {
+    public parsed: string = "";
+    private tagEngine = new TagToHtml();
 
-        const markdown = <HTMLTextAreaElement>document.getElementById( id );
-        const markdownOutput = <HTMLLabelElement>document.getElementById( output );
-        console.log("Markdown")
-
-        if( markdown !== null ){
-            markdown.onkeyup = e => {
-
-                if( markdown.value ){
-                    markdownOutput.innerHTML = markdown.value;
-                } else {
-                    markdownOutput.innerHTML = ""
-                }
-            }
-        }
-
+    public init(): void{
+        console.log({ HtmlHandler });
     }
-}
 
-enum TagType {
-    Header1,
-    Header2,
-    Header3,
-    Paragraph
-}
+    public parse( line: string ): string{
+        // '## example'
+        //  '#example'
+        //  'example'
 
-class TagToHtml{
-    private readonly tagType: Map< TagType, string > = new Map< TagType, string >();
+        let parsed = ""
+        let lineArr = line.split(" ");
+        let type = this.tagEngine.tagChainHandler( lineArr[ 0 ] );
+        let open = this.tagEngine.openTag( type );
+        let close = this.tagEngine.closeTag( type );
+        console.log({ type })
+        console.log({ open })
+        console.log({ close })
+        parsed += open + lineArr[ 1 ] + close;
 
-    constructor() {
-        this.tagType.set(TagType.Header1, "h1");
-        this.tagType.set(TagType.Header2, "h2");
-        this.tagType.set(TagType.Header3, "h3");
-        this.tagType.set(TagType.Paragraph, "p");
+        return parsed;
     }
 
 }
 
 
-export { HtmlHandler }
+
+
+export { Parser } 
