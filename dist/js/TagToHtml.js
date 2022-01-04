@@ -1,9 +1,9 @@
 var TagType;
 (function (TagType) {
-    TagType[TagType["Header1"] = 0] = "Header1";
-    TagType[TagType["Header2"] = 1] = "Header2";
-    TagType[TagType["Header3"] = 2] = "Header3";
-    TagType[TagType["Paragraph"] = 3] = "Paragraph";
+    TagType[TagType["Paragraph"] = 0] = "Paragraph";
+    TagType[TagType["Header1"] = 1] = "Header1";
+    TagType[TagType["Header2"] = 2] = "Header2";
+    TagType[TagType["Header3"] = 3] = "Header3";
 })(TagType || (TagType = {}));
 class TagToHtml {
     constructor() {

@@ -9,6 +9,7 @@ class Parser {
         console.log({ HtmlHandler });
     }
     parse(line) {
+        // arg line 
         // '## example'
         //  '#example'
         //  'example'
@@ -17,10 +18,14 @@ class Parser {
         let type = this.tagEngine.tagChainHandler(lineArr[0]);
         let open = this.tagEngine.openTag(type);
         let close = this.tagEngine.closeTag(type);
-        console.log({ type });
-        console.log({ open });
-        console.log({ close });
-        parsed += open + lineArr[1] + close;
+        if (type === 0) {
+            parsed += open + line + close;
+        }
+        else {
+            console.log("Sliced: ", lineArr.slice(1).join(" "));
+            lineArr[1] ? lineArr[1] = lineArr.slice(1).join(" ") : lineArr[1] = "";
+            parsed += open + lineArr[1] + close;
+        }
         return parsed;
     }
 }
