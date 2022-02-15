@@ -11,6 +11,7 @@ class HtmlHandler {
         const markdownOutput = <HTMLLabelElement>document.getElementById( output );
 
         if( markdown !== null ){
+            
             markdown.onkeyup = e => {
                 if( markdown.value ){
                     this.markdownArray = markdown.value.split( String.fromCharCode( 10 ) );
@@ -26,7 +27,18 @@ class HtmlHandler {
                     markdownOutput.innerHTML = ""
                 }
             }
-        }
+            markdown.onpaste = e => {
+                console.log(" On paste");
+                console.log({ e });
+                let value = markdown.value;
+                console.log({ value });
+
+            } 
+        };
+    }
+
+    private handleMarkdownChange = ( e: ClipboardEvent ) => {
+        console.log({ e });
     }
 
     public setParsedMarkdown( content: string ): void {

@@ -2,6 +2,9 @@ class HtmlHandler {
     constructor() {
         this.markdownArray = [];
         this.parsedMarkdown = "";
+        this.handleMarkdownChange = (e) => {
+            console.log({ e });
+        };
     }
     TextChangeHandler(id, output, parser) {
         const markdown = document.getElementById(id);
@@ -23,7 +26,11 @@ class HtmlHandler {
                     markdownOutput.innerHTML = "";
                 }
             };
+            markdown.onpaste = e => {
+                console.log({ e });
+            };
         }
+        ;
     }
     setParsedMarkdown(content) {
         this.parsedMarkdown = content;
